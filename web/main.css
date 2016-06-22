@@ -1,0 +1,49 @@
+.border {
+  border: 3px solid black; }
+
+.col-xs-6 .col-md-4 {
+  margin: 3px; }
+
+a {
+  text-decoration: none; }
+
+.head {
+  background: #eee; }
+
+.panel {
+  padding: 0px;
+  margin: 5px; }
+
+.wrap {
+  width: 80%;
+  margin: auto; }
+
+.absolute {
+  position: absolute; }
+
+.inlineBlock {
+  display: inline-block; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.fixed-up {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 100; }
+
+.center-btn {
+  display: table;
+  margin: 0 auto;
+  text-align: center; }
+
+.btn-registration {
+  background: #a3c644 !important;
+  color: white; }
+
+/*# sourceMappingURL=main.css.map */
