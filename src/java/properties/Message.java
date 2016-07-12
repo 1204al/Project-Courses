@@ -28,8 +28,6 @@ public class Message {
     }
 
     public String getProperty(String key) {
-
         return (String) resource.getObject(key);
     }
-
 }

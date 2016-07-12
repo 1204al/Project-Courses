@@ -47,8 +47,8 @@ public class MySQLDAOMark implements IDAOMark {
 
     @Override
     public boolean create(int idStudent, int idCourse) {
-        try (Connection dbConnection = ConnectionSource.getInstance().getConnection();) {
-            PreparedStatement preparedStatement = dbConnection.prepareStatement(CREATE_QUERY);
+        try (Connection conn = ConnectionSource.getInstance().getConnection();) {
+            PreparedStatement preparedStatement = conn.prepareStatement(CREATE_QUERY);
             preparedStatement.setInt(1, idStudent);
             preparedStatement.setInt(2, idCourse);
             preparedStatement.execute();
@@ -63,8 +63,8 @@ public class MySQLDAOMark implements IDAOMark {
 
     @Override
     public boolean remove(int idStudent, int idCourse) {
-        try (Connection dbConnection = ConnectionSource.getInstance().getConnection();) {
-            PreparedStatement preparedStatement = dbConnection.prepareStatement(REMOVE_MARK_BY_STUDENT_ID_AND_COURSE_ID_QUERY);
+        try (Connection conn = ConnectionSource.getInstance().getConnection();) {
+            PreparedStatement preparedStatement = conn.prepareStatement(REMOVE_MARK_BY_STUDENT_ID_AND_COURSE_ID_QUERY);
             preparedStatement.setInt(1, idStudent);
             preparedStatement.setInt(2, idCourse);
             preparedStatement.execute();

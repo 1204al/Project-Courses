@@ -12,7 +12,7 @@
 
     <c:if test="${containsCoursesId}">
         <div class="col-xs-6 col-md-4">
-            <div class="panel ${sessionScope.colors[myIndex.index%fn:length(colors)]}"><%--тут типа цвета --%>
+            <div class="panel ${sessionScope.colors[myIndex.index%fn:length(colors)]}">
                 <div class="panel-heading">
                     <h3 class="panel-title">${item.nameCourse}</h3>
                 </div>

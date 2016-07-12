@@ -19,7 +19,7 @@
 <%@include file="sessionScope.jsp" %>
 
 
-<%--Ваша ошибка: <br>--%>
+
 <h2 class="alert alert-dismissible alert-danger">${sessionScope.error}</h2>
 
 <button  class="btn btn-primary col-lg-offset-3 " onClick="history.back()"><fmt:message key="Back" /></button>

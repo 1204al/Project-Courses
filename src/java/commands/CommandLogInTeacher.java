@@ -5,6 +5,7 @@ import controllers.ICommand;
 import datasource.DAOFactory;
 import entities.Course;
 import entities.Mark;
+import entities.Student;
 import entities.Teacher;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -73,6 +74,10 @@ public class CommandLogInTeacher implements ICommand {
             List<Mark> marks=DAOFactory.getDAOMark().findByIdCourse(teacher.getIdTeacher());
             System.out.println("marks = " + marks);
             if(marks.size()>0){
+                for (int i = 0; i < marks.size(); i++) {
+                    Student student=DAOFactory.getDAOStudent().findByID(marks.get(i).getStudent().getIdStudent());
+                    marks.get(i).setStudent(student);
+                }
                 session.setAttribute(MARKS,marks);
             }
 
