@@ -27,6 +27,8 @@ public class CommandRegistrationStudentOnCourse implements ICommand {
 
     private static final String ID_COURSE = "idCourse";
 
+    private static final String PAGE = "page";
+
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,6 +39,7 @@ public class CommandRegistrationStudentOnCourse implements ICommand {
         List<Integer> studentCoursesId=DAOFactory.getDAOMark().findCoursesOfStudentByIdStudent(idStudent);
         session.setAttribute(COURSES_ID, studentCoursesId);
 
+        session.setAttribute(PAGE,Config.STUDENT_PAGE);
         request.getRequestDispatcher(Config.getInstance().getProperty(Config.STUDENT_PAGE)).forward(request, response);
         return null;
     }

@@ -27,6 +27,8 @@ public class CommandRegistrationTeacher implements ICommand{
     private static final String TEACHER = "teacher";
 
     private static final String ERROR = "error";
+    private static final String PAGE = "page";
+
 
     private final Logger logger = LogManager.getLogger(CommandRegistrationTeacher.class.getName());
     @Override
@@ -39,13 +41,15 @@ public class CommandRegistrationTeacher implements ICommand{
 
         if (DAOFactory.getDAOTeacher().findByLogin(login) != null){
             logger.info(String.format("Login is already in use. Login = %s",login));
-            request.getSession().setAttribute(ERROR, Message.getInstance().getProperty(Message.WRONG_LOGIN_USED));
+            request.getSession().setAttribute(ERROR, Message.WRONG_LOGIN_USED);
+            session.setAttribute(PAGE,Config.ERROR_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.ERROR_PAGE)).forward(request,response);
             return null;
         }
         if (DAOFactory.getDAOTeacher().findByEmail(email) != null){
             logger.info(String.format("EMAIL is already in use. EMAIL = %s",login));
-            request.getSession().setAttribute(ERROR, Message.getInstance().getProperty(Message.WRONG_EMAIL_USED));
+            request.getSession().setAttribute(ERROR, Message.WRONG_EMAIL_USED);
+            session.setAttribute(PAGE,Config.ERROR_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.ERROR_PAGE)).forward(request,response);
             return null;
         }
@@ -57,13 +61,16 @@ public class CommandRegistrationTeacher implements ICommand{
             session.setAttribute(ID, teacher.getIdTeacher());
             session.setAttribute(ROLE,TEACHER);
 
+            session.setAttribute(PAGE,Config.TEACHER_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.TEACHER_PAGE)).forward(request, response);
 
 
 
 
         } else{
-            request.getSession().setAttribute(ERROR, Message.getInstance().getProperty(Message.RANDOM_ERROR));
+            request.getSession().setAttribute(ERROR,Message.RANDOM_ERROR);
+            session.setAttribute(PAGE,Config.ERROR_PAGE);
+
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.ERROR_PAGE)).forward(request,response);
         }
 

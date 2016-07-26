@@ -31,6 +31,7 @@ public class ControllerHelper {
         commands.put("registrationTeacher",new CommandRegistrationTeacher());
         commands.put("changeCourse",new CommandChangeCourse());
         commands.put("goToTeacherPage",new CommandGoToTeacherPage());
+        commands.put("changeLanguage",new CommandChangeLanguage());
 
         commands.put("logout",new CommandLogOut());
 

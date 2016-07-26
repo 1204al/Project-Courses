@@ -6,8 +6,10 @@
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
-    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
-      <schema id="1" name="dbcourses"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="dbcourses">
+        <visible>1</visible>
+      </schema>
       <table id="2" parent="1" name="courses"/>
       <table id="3" parent="1" name="marks"/>
       <table id="4" parent="1" name="students"/>
@@ -15,14 +17,14 @@
       <table id="6" parent="1" name="test"/>
       <column id="7" parent="2" name="idCourse">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="8" parent="2" name="nameCourse">
         <mandatory>1</mandatory>
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <column id="9" parent="2" name="information">
-        <data-type>varchar(200)</data-type>
+        <data-type>varchar(200)|0</data-type>
       </column>
       <key id="10" parent="2" name="PRIMARY">
         <columns>idCourse</columns>
@@ -36,21 +38,21 @@
       </foreign-key>
       <column id="12" parent="3" name="idMark">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="13" parent="3" name="mark">
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <column id="14" parent="3" name="idStudent">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="15" parent="3" name="idCourse">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="16" parent="3" name="dateReg">
-        <data-type>date</data-type>
+        <data-type>date|0</data-type>
       </column>
       <index id="17" parent="3" name="marks_courses_idCourse_fk">
         <columns>idCourse</columns>
@@ -78,21 +80,21 @@
       </foreign-key>
       <column id="22" parent="4" name="idStudent">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="23" parent="4" name="emailStudent">
         <mandatory>1</mandatory>
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <column id="24" parent="4" name="passwordStudent">
         <mandatory>1</mandatory>
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <column id="25" parent="4" name="nameStudent">
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <column id="26" parent="4" name="loginStudent">
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <index id="27" parent="4" name="students_emailStudent_uindex">
         <columns>emailStudent</columns>
@@ -118,21 +120,21 @@
       </key>
       <column id="32" parent="5" name="idTeacher">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="33" parent="5" name="emailTeacher">
         <mandatory>1</mandatory>
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <column id="34" parent="5" name="passwordTeacher">
         <mandatory>1</mandatory>
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <column id="35" parent="5" name="nameTeacher">
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <column id="36" parent="5" name="loginTeacher">
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <index id="37" parent="5" name="teachers_emailTeacher_uindex">
         <columns>emailTeacher</columns>
@@ -158,13 +160,13 @@
       </key>
       <column id="42" parent="6" name="column_1">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="43" parent="6" name="column_2">
-        <data-type>int(11)</data-type>
+        <data-type>int(11)|0</data-type>
       </column>
       <column id="44" parent="6" name="column_3">
-        <data-type>varchar(45)</data-type>
+        <data-type>varchar(45)|0</data-type>
       </column>
       <key id="45" parent="6" name="PRIMARY">
         <columns>column_1</columns>

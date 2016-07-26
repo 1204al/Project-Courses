@@ -26,6 +26,8 @@ public class CommandLeavingCourse implements ICommand {
     private static final String COURSES_ID = "coursesId";
 
     private static final String ID_COURSE = "idCourse";
+    private static final String PAGE = "page";
+
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,6 +43,8 @@ public class CommandLeavingCourse implements ICommand {
         System.out.println("studentCoursesId = " + studentCoursesId);
         session.setAttribute(COURSES_ID, studentCoursesId);
 
+
+        session.setAttribute(PAGE,Config.STUDENT_PAGE);
         request.getRequestDispatcher(Config.getInstance().getProperty(Config.STUDENT_PAGE)).forward(request, response);
 
 

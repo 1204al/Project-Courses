@@ -20,7 +20,7 @@
     <br>
     <label class="col-lg-2 control-label"><fmt:message key="EMAIL"/> </label>
     <div class="col-lg-10">
-        <input type="text"class="form-control" placeholder="<fmt:message key="EMAIL"/> " name="email">
+        <input type="email"class="form-control" placeholder="<fmt:message key="EMAIL"/> " name="email">
     </div>
     <br>
 

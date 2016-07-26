@@ -16,6 +16,7 @@ public class CommandChangeCourse implements ICommand {
     private static final String INFORMATION = "information";
     private static final String ID = "id";
     private static final String TEACHER_COURSE = "teacherCourse";
+    private static final String PAGE = "page";
 
 
     @Override
@@ -41,7 +42,7 @@ public class CommandChangeCourse implements ICommand {
             session.setAttribute(TEACHER_COURSE,course);
         }
 
-
+        session.setAttribute(PAGE,Config.TEACHER_PAGE);
         request.getRequestDispatcher(Config.getInstance().getProperty(Config.TEACHER_PAGE)).forward(request, response);
 
 

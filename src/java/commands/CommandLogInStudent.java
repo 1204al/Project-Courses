@@ -32,6 +32,9 @@ public class CommandLogInStudent implements ICommand {
     private static final String ERROR = "error";
     private static final String COURSES_ID = "coursesId";
 
+    private static final String PAGE = "page";
+
+
 
     private final Logger logger = LogManager.getLogger(CommandLogInStudent.class.getName());
 
@@ -47,11 +50,13 @@ public class CommandLogInStudent implements ICommand {
         System.out.println(student);
         if (student == null) {
             logger.info(String.format("Wrong login. Login=%s", login));
-            session.setAttribute(ERROR, Message.getInstance().getProperty(Message.WRONG_LOGIN));
+            request.setAttribute(ERROR, Message.WRONG_LOGIN);
+            session.setAttribute(PAGE,Config.ERROR_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.ERROR_PAGE)).forward(request, response);
         } else if (!student.getPasswordStudent().equals(password)) {
             logger.info(String.format("Wrong password. Login=%s  Password=%s", login, password));
-            session.setAttribute(ERROR, Message.getInstance().getProperty(Message.WRONG_PASSWORD));
+            request.setAttribute(ERROR, Message.WRONG_PASSWORD);
+            session.setAttribute(PAGE,Config.ERROR_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.ERROR_PAGE)).forward(request, response);
         } else {
             //login and password are  OK!!
@@ -74,7 +79,7 @@ public class CommandLogInStudent implements ICommand {
             //Тоже самое добавить в команду регистрации!!
             // TODO: 5/28/2016 Дописать дао для этого
 
-
+            session.setAttribute(PAGE,Config.STUDENT_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.STUDENT_PAGE)).forward(request, response);
 
         }

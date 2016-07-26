@@ -31,6 +31,8 @@ public class CommandRegistrationStudent implements ICommand {
 
 
     private final Logger logger = LogManager.getLogger(CommandRegistrationStudent.class.getName());
+    private static final String PAGE = "page";
+
 
 
     @Override
@@ -43,13 +45,15 @@ public class CommandRegistrationStudent implements ICommand {
 
         if (DAOFactory.getDAOStudent().findByLogin(login) != null){
             logger.info(String.format("Login is already in use. Login = %s",login));
-            request.getSession().setAttribute(ERROR, Message.getInstance().getProperty(Message.WRONG_LOGIN_USED));
+            request.getSession().setAttribute(ERROR, Message.WRONG_LOGIN_USED);
+            session.setAttribute(PAGE,Config.ERROR_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.ERROR_PAGE)).forward(request,response);
             return null;
         }
         if (DAOFactory.getDAOStudent().findByEmail(email) != null){
             logger.info(String.format("EMAIL is already in use. EMAIL = %s",login));
-            request.getSession().setAttribute(ERROR, Message.getInstance().getProperty(Message.WRONG_EMAIL_USED));
+            request.getSession().setAttribute(ERROR, Message.WRONG_EMAIL_USED);
+            session.setAttribute(PAGE,Config.ERROR_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.ERROR_PAGE)).forward(request,response);
             return null;
         }
@@ -70,11 +74,12 @@ public class CommandRegistrationStudent implements ICommand {
 
 
 
-
+            session.setAttribute(PAGE,Config.STUDENT_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.STUDENT_PAGE)).forward(request, response);
 
         } else{
-            request.getSession().setAttribute(ERROR, Message.getInstance().getProperty(Message.RANDOM_ERROR));
+            request.getSession().setAttribute(ERROR, Message.RANDOM_ERROR);
+            session.setAttribute(PAGE,Config.ERROR_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.ERROR_PAGE)).forward(request,response);
         }
 

@@ -16,6 +16,8 @@ import java.util.List;
 
 public class CommandLogOut implements ICommand {
     private final Logger logger = LogManager.getLogger(CommandLogOut.class.getName());
+    private static final String PAGE = "page";
+
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +26,8 @@ public class CommandLogOut implements ICommand {
         HttpSession session=request.getSession();
 
         List<Course> list= DAOFactory.getDAOCourse().readAll();
-        session.setAttribute("list",list);
+        request.setAttribute("list",list);
+        session.setAttribute(PAGE,Config.COURSES);
         request.getRequestDispatcher(Config.getInstance().getProperty(Config.COURSES)).forward(request,response);
         return null;
     }

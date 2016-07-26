@@ -1,9 +1,14 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<fmt:setLocale value="en_US"/>
+<%@ taglib prefix="err" uri="/WEB-INF/TLDs/errorTag.tld"%>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="language.jsp" %>
+
+
+
 <html>
 <head>
     <title>Title</title>
@@ -19,9 +24,10 @@
 <%@include file="sessionScope.jsp" %>
 
 
+<err:error        errorType="${sessionScope.error}"        locale="${sessionScope.language}"/>
 
-<h2 class="alert alert-dismissible alert-danger">${sessionScope.error}</h2>
 
-<button  class="btn btn-primary col-lg-offset-3 " onClick="history.back()"><fmt:message key="Back" /></button>
+
+<button  class="btn btn-primary col-lg-offset-3 " onClick="history.back()"><fmt:message key="BACK" /></button>
 </body>
 </html>

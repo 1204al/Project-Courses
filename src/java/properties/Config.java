@@ -28,6 +28,7 @@ public class Config {
     }
 
     public String getProperty(String key) {
+        System.out.println(key);
         return (String) resource.getObject(key);
     }
 }

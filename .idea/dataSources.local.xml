@@ -4,8 +4,8 @@
     <data-source name="MySQL - dbcourses@localhost" uuid="edaef7e8-cd24-46bf-a504-698be975423d">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>dbcourses.*</schema-pattern>
-      <default-schemas>dbcourses.*</default-schemas>
+      <introspection-scope>dbcourses:*</introspection-scope>
+      <resolve-scope>dbcourses:*</resolve-scope>
     </data-source>
   </component>
 </project>
