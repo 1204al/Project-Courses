@@ -2,6 +2,7 @@ package commands;
 
 import controllers.ICommand;
 import datasource.DAOFactory;
+import entities.Course;
 import properties.Config;
 
 import javax.servlet.ServletException;
@@ -38,6 +39,9 @@ public class CommandRegistrationStudentOnCourse implements ICommand {
         DAOFactory.getDAOMark().create(idStudent,idCourse);
         List<Integer> studentCoursesId=DAOFactory.getDAOMark().findCoursesOfStudentByIdStudent(idStudent);
         session.setAttribute(COURSES_ID, studentCoursesId);
+
+        List<Course> list=DAOFactory.getDAOCourse().readAll();
+        request.setAttribute("list",list);
 
         session.setAttribute(PAGE,Config.STUDENT_PAGE);
         request.getRequestDispatcher(Config.getInstance().getProperty(Config.STUDENT_PAGE)).forward(request, response);

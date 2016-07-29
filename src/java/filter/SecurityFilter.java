@@ -31,6 +31,7 @@ public class SecurityFilter implements Filter {
                 ||url.equals("/main.css")
                 ||url.equals("/bootstrap.min.js")
                 ||url.equals("/favicon.ico")
+                ||url.equals("/main.css.map")
                 ){
             chain.doFilter(request, response);
 

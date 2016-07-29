@@ -24,8 +24,6 @@
 <body>
 
 
-<%@include file="changeLanguage_form.jsp" %>
-
 
 <%@include file="header.jsp" %>
 

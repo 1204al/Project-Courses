@@ -1,4 +1,11 @@
 <ul class="nav nav-pills right text-success ">
+    <li class="dropdown">
+        <a class="dropdown-toggle text-success" data-toggle="dropdown" href="#" aria-expanded="true">
+            <fmt:message key="STUDENT"/>
+        </a>
+    </li>
+
+
     <li class="dropdown " >
         <a class="dropdown-toggle text-success" data-toggle="dropdown" href="#" aria-expanded="true">
             <fmt:message key="LOG_IN"/>

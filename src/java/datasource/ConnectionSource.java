@@ -28,7 +28,7 @@ public class ConnectionSource {
 
     }
 
-    public static ConnectionSource getInstance() {
+    public static synchronized ConnectionSource getInstance() {
         return instance;
     }
 

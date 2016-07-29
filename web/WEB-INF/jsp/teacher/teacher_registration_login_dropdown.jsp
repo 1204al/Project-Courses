@@ -17,4 +17,10 @@
             <%@include file="teacher_registration_form.jsp" %>
         </div>
     </li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
+            <fmt:message key="TEACHER"/>
+        </a>
+
+    </li>
 </ul>

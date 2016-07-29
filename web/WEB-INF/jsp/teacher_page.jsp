@@ -2,6 +2,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="language.jsp" %>
+
 <html>
 <head>
     <title>Title</title>
@@ -26,6 +28,7 @@
 
 <div  class="col-lg-7 col-md-9 col-sm-10">
     <div>
+
         <%@include file="teacher/teacher_forms_for_email.jsp" %>
 
     </div>

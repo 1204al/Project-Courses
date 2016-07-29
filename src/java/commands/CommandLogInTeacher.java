@@ -50,7 +50,6 @@ public class CommandLogInTeacher implements ICommand {
         String password= Utils.MD5(request.getParameter(PASSWORD));
         Teacher teacher= DAOFactory.getDAOTeacher().findByLogin(login);
 
-        System.out.println(teacher);
         if(teacher==null){
             logger.info(String.format("Wrong login. Login=%s", login));
             request.setAttribute(ERROR, Message.WRONG_LOGIN);

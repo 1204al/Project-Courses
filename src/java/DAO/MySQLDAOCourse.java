@@ -68,7 +68,7 @@ public class MySQLDAOCourse implements IDAOCourse {
                 course = courseFromResultSet(rs);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return course;
     }
@@ -84,8 +84,11 @@ public class MySQLDAOCourse implements IDAOCourse {
                 list.add(course);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
+
+        logger.error("testtesttest");
+
 
         return list;
     }

@@ -2,6 +2,7 @@ package commands;
 
 import controllers.ICommand;
 import datasource.DAOFactory;
+import entities.Course;
 import properties.Config;
 
 import javax.servlet.ServletException;
@@ -35,15 +36,15 @@ public class CommandLeavingCourse implements ICommand {
         HttpSession session = request.getSession();
         int idStudent = (int) session.getAttribute(ID);
         int idCourse = Integer.parseInt(request.getParameter(ID_COURSE));
-        System.out.println("session.getAttribute(\"coursesId\") = " + session.getAttribute("coursesId"));
         DAOFactory.getDAOMark().remove(idStudent,idCourse);
 
 
         List<Integer> studentCoursesId=DAOFactory.getDAOMark().findCoursesOfStudentByIdStudent(idStudent);
-        System.out.println("studentCoursesId = " + studentCoursesId);
         session.setAttribute(COURSES_ID, studentCoursesId);
 
 
+        List<Course> list=DAOFactory.getDAOCourse().readAll();
+        request.setAttribute("list",list);
         session.setAttribute(PAGE,Config.STUDENT_PAGE);
         request.getRequestDispatcher(Config.getInstance().getProperty(Config.STUDENT_PAGE)).forward(request, response);
 

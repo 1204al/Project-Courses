@@ -16,7 +16,7 @@
 
                 <%--   ${fn:contains([18,19], 8)}  вернет true, так как работает с текстом,  поэтому пишем такую штуку--%>
                 <c:set var="containsCoursesId" value="false"/>
-                <c:forEach var="itemCoursesId" items="${requestScope.coursesId}">
+                <c:forEach var="itemCoursesId" items="${sessionScope.coursesId}">
                     <c:if test="${itemCoursesId==item.idCourse}">
                         <c:set var="containsCoursesId" value="true"/>
                     </c:if>

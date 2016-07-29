@@ -2,6 +2,8 @@ package commands;
 
 
 import controllers.ICommand;
+import datasource.DAOFactory;
+import entities.Course;
 import properties.Config;
 
 import javax.servlet.ServletException;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 public class CommandChangeLanguage implements ICommand {
     private static final String PAGE = "page";
@@ -20,8 +23,7 @@ public class CommandChangeLanguage implements ICommand {
         HttpSession session=request.getSession();
 
         String language= (String) session.getAttribute(LANGUAGE);
-        System.out.println("language = " + language);
-        if(language!=null){
+        if(language!=null||language.equals("")){
             if(language.equals("en")){
                 session.setAttribute(LANGUAGE,"ua");
             }else{
@@ -30,7 +32,10 @@ public class CommandChangeLanguage implements ICommand {
         }else{
             session.setAttribute(LANGUAGE,"en");
         }
-
+       if(((String)session.getAttribute(PAGE)).equals(Config.COURSES)){
+           List<Course> list = DAOFactory.getDAOCourse().readAll();
+           request.setAttribute("list", list);
+       }
         String page= (String) session.getAttribute(PAGE);
         request.getRequestDispatcher(Config.getInstance().getProperty(page)).forward(request, response);
 

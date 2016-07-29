@@ -47,7 +47,6 @@ public class CommandLogInStudent implements ICommand {
         String password = Utils.MD5(request.getParameter(PASSWORD));
         Student student = DAOFactory.getDAOStudent().findByLogin(login);
 
-        System.out.println(student);
         if (student == null) {
             logger.info(String.format("Wrong login. Login=%s", login));
             request.setAttribute(ERROR, Message.WRONG_LOGIN);
@@ -74,10 +73,7 @@ public class CommandLogInStudent implements ICommand {
             session.setAttribute(COURSES_ID, studentCoursesId);
 
 
-            // TODO: 5/28/2016  Достать инфу про курсы, id курсов на которых есть этот студент
-            //Чтоб потом отметить, где он есть где нет
-            //Тоже самое добавить в команду регистрации!!
-            // TODO: 5/28/2016 Дописать дао для этого
+
 
             session.setAttribute(PAGE,Config.STUDENT_PAGE);
             request.getRequestDispatcher(Config.getInstance().getProperty(Config.STUDENT_PAGE)).forward(request, response);

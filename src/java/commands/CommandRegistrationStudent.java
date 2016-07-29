@@ -67,10 +67,6 @@ public class CommandRegistrationStudent implements ICommand {
 
 
             session.setAttribute(COURSES_ID,null);
-            // TODO: 5/28/2016  Достать инфу про курсы, id курсов на которых есть этот студент
-            //Чтоб потом отметить, где он есть где нет
-            //Тоже самое добавить в команду регистрации!!
-            // TODO: 5/28/2016 Дописать дао для этого
 
 
 

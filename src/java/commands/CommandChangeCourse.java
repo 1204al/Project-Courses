@@ -32,7 +32,6 @@ public class CommandChangeCourse implements ICommand {
 
             course=new Course(id,name,information);
             isFullfilled=DAOFactory.getDAOCourse().create(course);
-            System.out.println("create");
         }else{
             course=new Course(id,name,information);
             isFullfilled=DAOFactory.getDAOCourse().update(course);

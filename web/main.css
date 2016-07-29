@@ -1,5 +1,5 @@
 .border {
-  border: 3px solid black; }
+  border: 1px solid black; }
 
 .col-xs-6 .col-md-4 {
   margin: 3px; }
@@ -46,4 +46,9 @@ a {
   background: #a3c644 !important;
   color: white; }
 
+.language_head{
+  width: 250px;
+  margin: auto;
+
+}
 /*# sourceMappingURL=main.css.map */
